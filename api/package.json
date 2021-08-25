@@ -1,7 +1,7 @@
 {
   "name": "",
   "version": "",
-  "scripts" : {
+  "scripts": {
     "build": "tsc",
     "build:production": "npm run prestart && npm prune --production",
     "watch": "tsc --w",
@@ -15,5 +15,8 @@
     "@azure/functions": "^1.0.1-beta1",
     "npm-run-all": "^4.1.5",
     "typescript": "^3.3.3"
+  },
+  "dependencies": {
+    "@azure/cosmos": "^3.13.1"
   }
 }

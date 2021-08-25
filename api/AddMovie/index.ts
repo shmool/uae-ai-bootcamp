@@ -3,6 +3,7 @@ import { CosmosClient } from "@azure/cosmos"
 
 
 const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
+  try {
   let userDetails = null;
   const header = req.headers['x-ms-client-principal'];
   if (header) {
@@ -44,6 +45,15 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
           message: 'success'
         }
     };
+
+  } catch (error) {
+    context.res = {
+      // status: 200, /* Defaults to 200 */
+      body: {
+        message: error
+      }
+  };
+  }
 
 };
 

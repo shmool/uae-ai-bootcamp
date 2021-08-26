@@ -23,6 +23,8 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     return;
   }
 
+  const movie = req.body.title.substring(0, 100);
+
   const endpoint = process.env.DB_ENDPOINT;
   const key = process.env.DB_KEY;
   const databaseName = 'uae-bootcamp';
@@ -35,7 +37,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
   const item = {
     groupId: '55555',
     user: userDetails,
-    movie: req.body.title
+    movie
   }
   const itemsRes = await container.items.create(item);
 
